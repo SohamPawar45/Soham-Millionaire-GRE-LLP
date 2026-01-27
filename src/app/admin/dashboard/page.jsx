@@ -1,5 +1,3 @@
-import AdminSidebar from "@/components/admin/Sidebar";
-
 export default function AdminDashboardLayout({ children }) {
   return (
     <div className="min-h-screen flex bg-slate-50">
