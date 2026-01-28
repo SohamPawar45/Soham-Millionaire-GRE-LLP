@@ -10,9 +10,7 @@ import {
   FolderOpen,
   PieChart,
   ListChecks,
-  Settings,
   ScrollText,
-  Award,
   Menu,
   X,
 } from "lucide-react";
@@ -63,8 +61,8 @@ export default function Sidebar() {
     {
       name: "Test Attempts",
       icon: ListChecks,
-      href: "/admin/testAttempts",
-      match: "/admin/testAttempts",
+      href: "/admin/attempts",
+      match: "/admin/attempts",
     },
   ];
 
@@ -79,7 +77,7 @@ export default function Sidebar() {
         <div className="flex items-center justify-between">
           {sidebarOpen && (
             <h2 className="text-xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              MIllionaire-GRE
+              Millionaire-GRE
             </h2>
           )}
           <button
@@ -100,9 +98,12 @@ export default function Sidebar() {
         <ul className="space-y-2">
           {menuItems.map((item) => {
             const Icon = item.icon;
+
+            // ✅ FIXED ACTIVE LOGIC
             const isActive =
-              pathname === item.match ||
-              pathname.startsWith(item.match + "/");
+              item.match === "/admin"
+                ? pathname === "/admin"
+                : pathname.startsWith(item.match);
 
             return (
               <li key={item.name}>
@@ -130,8 +131,6 @@ export default function Sidebar() {
           })}
         </ul>
       </nav>
-
-    
     </aside>
   );
 }
