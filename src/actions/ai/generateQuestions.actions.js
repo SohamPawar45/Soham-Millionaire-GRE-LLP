@@ -1,6 +1,6 @@
 'use server'
 
-import { createClient } from '@/lib/supabase/server'
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { GoogleGenAI } from '@google/genai'
 
 const genAI = new GoogleGenAI({
@@ -13,7 +13,7 @@ const genAI = new GoogleGenAI({
  * System enforces GRE/PPL format and accuracy
  */
 export async function sendMessage(topic) {
-  const supabase = await createClient()
+  const supabase = await createSupabaseServerClient()
 
   /* ---------------- PERMANENT BASE CONTEXT ---------------- */
 
